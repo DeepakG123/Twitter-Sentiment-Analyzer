@@ -5,19 +5,19 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-user_me = api.get_user('DeepakG_1234')
-user_roohi = api.get_user('xoroohi')
-user_ruchi = api.get_user('ruchikakkad04')
-user_god = api.get_user('CaseyNeistat')
+users = ['xoroohi', 'ruchikakkad04','DeepakG_1234']
 
-users = [user_me, user_roohi, user_ruchi, user_god]
+alltweets = []
 
-for user in users:
-    print("-------------------")
-    print('Name: ' + user.name)
-    print('Location: ' + user.location)
-    print('Friends: ' + str(user.friends_count))
+tweets = api.user_timeline(screenname = 'ruchikakkad04', count = 200)
 
+alltweets.extend(tweets)
 
-for status in tweepy.Cursor(api.user_timeline).items():
-    print(status.text)
+oldest = alltweets[-1].id - 1
+
+while len(tweets) > 0:
+    print("getting tweets before %s" % (oldest))
+    new_tweets = api.user_timeline(screen_name= 'ruchikakkad04', count=200, max_id=oldest)
+    alltweets.extend(new_tweets)
+    oldest = alltweets[-1].id - 1
+    print("...%s tweets downloaded so far" % (len(alltweets)))

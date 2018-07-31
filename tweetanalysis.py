@@ -1,6 +1,7 @@
 import tweepy
 from constants import *
 import csv
+import unicodedata
 
 
 #Authentication using API keys
@@ -22,15 +23,18 @@ all_no_rts = []
 number_tweets = 0
 for status in tweepy.Cursor(api.user_timeline, screen_name='ruchikakkad04').items():
     number_tweets = number_tweets  + 1
-    alltweets.append(status._json['text'].encode('utf-8'))
+    alltweets.append(status._json['text'])
 print(number_tweets)
-print((alltweets))
+
+for tweet in alltweets:
+    print(tweet)
 
 #Save to CSV file
 with open('tweets.csv', 'w+') as new_file:
     csv_writer = csv.writer(new_file, delimiter = "-")
 
     for tweet in alltweets:
+        row = [tweet.encode('utf-8')]
         csv_writer.writerow([tweet])
 
 

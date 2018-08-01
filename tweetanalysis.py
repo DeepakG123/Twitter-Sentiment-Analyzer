@@ -15,58 +15,53 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 
-#KList of test users
-users = ['xoroohi', 'ruchikakkad04','DeepakG_1234']
-
-#Array to store tweets
-alltweets = []
-retweets = []
-all_no_rts = []
-
-
-#Retrieves whole timeline
-number_tweets = 0
-for status in tweepy.Cursor(api.user_timeline, screen_name= username, count =200).items():
-    number_tweets = number_tweets  + 1
-    alltweets.append(status._json['text'])
-print(number_tweets)
-
-#Populate all_no_rts and retweets
-for tweet in alltweets:
-    if(tweet[:2] !=  "RT"):
-        all_no_rts.append(tweet)
-    else:
-        retweets.append(tweet)
-
-# #Sentiment Analysis
-# def find_sentiment(username):
-#
+#Create array of all tweets and retweets
+def get_Tweets(username):
+    global alltweets
+    global retweets
+    global all_no_rts
+    alltweets = []
+    retweets = []
+    all_no_rts = []
+    for status in tweepy.Cursor(api.user_timeline, screen_name=username, count=200).items():
+        alltweets.append(status._json['text'])
+    for tweet in alltweets:
+        if (tweet[:2] != "RT"):
+            all_no_rts.append(tweet)
+        else:
+            retweets.append(tweet)
 
 
-#All tweets
-positive_num = 0
-negative_num = 0
-total_polarity_all = 0
-total_subj_all = 0;
-for tweet in all_no_rts:
-    text = TextBlob(tweet)
-    total_polarity_all += text.sentiment.polarity
-    total_subj_all += text.sentiment.subjectivity
-    if(text.sentiment.polarity > 0):
-        positive_num += 1
-    else:
-        negative_num += 1
-polarity = total_polarity_all /len(all_no_rts)
-subjectivity = total_subj_all/len(all_no_rts)
+#Sentiment Analysis
+def find_sentiment(tweets_list):
+    global positive_num
+    positive_num= 0
+    global negative_num
+    negative_num = 0
+    total_polarity_all = 0
+    total_subj_all = 0
+    global polarity
+    global subjectivity
+    for tweet in tweets_list:
+        text = TextBlob(tweet)
+        total_polarity_all += text.sentiment.polarity
+        total_subj_all += text.sentiment.subjectivity
+        if (text.sentiment.polarity > 0):
+            positive_num += 1
+        else:
+            negative_num += 1
+    polarity = total_polarity_all / len(tweets_list)
+    subjectivity = total_subj_all / len(tweets_list)
+    print("Average Polarity: " + str(polarity))
+    print("Average Subjectivity: " + str(subjectivity))
 
-print(len(all_no_rts))
+get_Tweets(username)
+find_sentiment(alltweets)
 
-print("Average Polarity: " + str(polarity))
-print("Average Subjectivity: " + str(subjectivity))
 
-#Data Visualization
+#Data Visualization, all tweets
 labels = 'Positive', 'Negative'
-percentages = [positive_num /len(all_no_rts), negative_num /len(all_no_rts)]
+percentages = [positive_num /len(alltweets), negative_num /len(alltweets)]
 fig1, ax1 = plt.subplots()
 ax1.pie(percentages,  labels=labels, autopct='%1.1f%%',
         shadow=True, startangle=90)
@@ -80,6 +75,7 @@ plt.show()
 #     for tweet in alltweets:
 #         row = [tweet.encode('utf-8')]
 #         csv_writer.writerow([tweet])
+
 
 
 

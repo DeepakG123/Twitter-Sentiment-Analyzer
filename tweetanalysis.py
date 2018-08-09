@@ -23,16 +23,38 @@ def get_Tweets(username):
     alltweets = []
     retweets = []
     all_no_rts = []
+    sort_Time(tweepy.Cursor(api.user_timeline, screen_name=username, count=200).items())
+    # for status in tweepy.Cursor(api.user_timeline, screen_name=username, count=200).items():
+    #     alltweets.append(status._json['text'])
+    # for tweet in alltweets:
+    #     if (tweet[:2] != "RT"):
+    #         all_no_rts.append(tweet)
+    #     else:
+    #         retweets.append(tweet)
+    # print(len(alltweets))
 
-    for status in tweepy.Cursor(api.user_timeline, screen_name=username, count=200).items():
-        print(status)
-        alltweets.append(status._json['text'])
-    for tweet in alltweets:
-        if (tweet[:2] != "RT"):
-            all_no_rts.append(tweet)
-        else:
-            retweets.append(tweet)
-    print(len(alltweets))
+def get_Date(status):
+    date = status._json["created_at"]
+    month = date[4:7]
+    year = date[-4:]
+    return [month,year]
+
+def sort_Time(status_list):
+    sorted_statues= []
+    for status in status_list:
+        date = get_Date(status)
+        month = date[0]
+        year = date[1]
+        if len(sorted_statues) == 0:
+            sorted_statues.append([status])
+        if len(sorted_statues) != 0:
+            last_array = sorted_statues[-1]
+            last_date = get_Date(last_array[0])
+            if month == last_date[0] and year == last_date[1]:
+                last_array.append(date)
+            else:
+                sorted_statues.append([status])
+
 
 
 #Sentiment Analysis
@@ -72,18 +94,10 @@ def find_sentiment(tweets_list):
 
 
 get_Tweets(username)
-find_sentiment(all_no_rts)
+# find_sentiment(all_no_rts)
 
 
-#Data Visualization, all tweets
 
-# #Save to CSV file
-# with open('tweets.csv', 'w+') as new_file:
-#     csv_writer = csv.writer(new_file, delimiter = "-")
-#
-#     for tweet in alltweets:
-#         row = [tweet.encode('utf-8')]
-#         csv_writer.writerow([tweet])
 
 
 

@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f0758e7-c9ff-4334-ab5a-baa217cd718b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/AnalysisTime.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/methods.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tweets.csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tweetanalysis.py" afterPath="$PROJECT_DIR$/tweetanalysis.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,10 +26,11 @@
       <file leaf-file-name="tweetanalysis.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tweetanalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+            <state relative-caret-position="197">
+              <caret line="132" column="39" lean-forward="true" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#1101#1807#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -269,7 +266,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -287,6 +286,7 @@
           <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1101#1807#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -361,6 +361,7 @@
           <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1101#1807#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -379,6 +380,7 @@
           <caret line="51" column="53" lean-forward="true" selection-start-line="51" selection-start-column="53" selection-end-line="51" selection-end-column="53" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1101#1807#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -429,6 +431,7 @@
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1101#1807#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -504,10 +507,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tweetanalysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+        <state relative-caret-position="197">
+          <caret line="132" column="39" lean-forward="true" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1101#1807#0" expanded="false" />
           </folding>
         </state>
       </provider>
